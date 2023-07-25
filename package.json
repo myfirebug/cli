@@ -13,6 +13,7 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^4.0.1",
     "html-webpack-plugin": "^5.5.3",
+    "portfinder": "^1.0.32",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.1.0",
     "sass": "^1.64.1",
