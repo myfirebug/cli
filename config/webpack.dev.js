@@ -1,5 +1,6 @@
 const ESLintPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackBar = require("webpackbar");
 const path = require("path");
 const { tools } = require("./utils");
 const { getStyleLoader } = tools;
@@ -79,7 +80,17 @@ module.exports = {
       // 模板：以public/index.html文件创建新的html文件
       // 新的文件特点：结构和原来一致，自动引入打包出的资源
       template: path.resolve(__dirname, "../public/index.html"),
+      minify: {
+        // 压缩 HTML 文件
+        removeComments: true, // 移除 HTML 中的注释
+        collapseWhitespace: true, // 删除空白符与换行符
+        minifyCSS: true, // 压缩内联 css
+      },
+      templateParameters: {
+        PUBLIC_URL: "/",
+      },
     }),
+    new WebpackBar(),
   ],
   // 模式
   mode: "development",
