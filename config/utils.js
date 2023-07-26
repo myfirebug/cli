@@ -1,5 +1,7 @@
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// MiniCssExtractPlugin.loader
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const NODE_ENV = process.env.NODE_ENV;
+const isDev = NODE_ENV === "development";
+const isProd = NODE_ENV === "production";
 /**
  * 用来获取处理样式的loader
  * @param {*} pre
@@ -7,7 +9,7 @@
  */
 function getStyleLoader(pre) {
   return [
-    "style-loader",
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
     "css-loader",
     {
       loader: "postcss-loader",
@@ -23,4 +25,6 @@ function getStyleLoader(pre) {
 
 exports.tools = {
   getStyleLoader,
+  isDev,
+  isProd,
 };

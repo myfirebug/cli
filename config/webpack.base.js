@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const path = require("path");
 const { tools } = require("./utils");
-const { getStyleLoader } = tools;
+const { getStyleLoader, isDev } = tools;
 
 module.exports = {
   stats: "errors-only",
@@ -33,7 +33,7 @@ module.exports = {
           },
           {
             test: /\.s[ac]ss$/i,
-            use: getStyleLoader("scss-loader"),
+            use: getStyleLoader("sass-loader"),
           },
           // 处理图片
           {
@@ -59,6 +59,9 @@ module.exports = {
                 options: {
                   cacheDirectory: true, // 开启babel缓存
                   cacheCompression: false, // 关闭缓存文件压缩
+                  plugins: [
+                    isDev && require.resolve("react-refresh/babel"),
+                  ].filter(Boolean), // React 组件启用“快速刷新”（也称为热重载）
                 },
               },
             ],
@@ -81,15 +84,6 @@ module.exports = {
       // 模板：以public/index.html文件创建新的html文件
       // 新的文件特点：结构和原来一致，自动引入打包出的资源
       template: path.resolve(__dirname, "../public/index.html"),
-      minify: {
-        // 压缩 HTML 文件
-        removeComments: true, // 移除 HTML 中的注释
-        collapseWhitespace: true, // 删除空白符与换行符
-        minifyCSS: true, // 压缩内联 css
-      },
-      templateParameters: {
-        PUBLIC_URL: "/",
-      },
     }),
     new WebpackBar(),
   ],
