@@ -8,14 +8,18 @@ const { getStyleLoader, isDev, fmtDate } = tools;
 module.exports = {
   stats: "errors-only",
   // 入口相对路径
-  entry: "./src/main.js",
+  entry: "./src/main.tsx",
   // 输出
   output: {
     // 文件的输出路径，绝对路由
     // __dirname nodejs的变量，代表当前文件的文件夹目录
-    path: undefined,
+    path: isDev ? undefined : path.resolve(__dirname, "../dist"),
     // 入口打包输出的文件名
-    filename: "static/js/[name].js",
+    filename: isDev
+      ? "static/js/[name].js"
+      : "static/js/[name].[contenthash:10].js",
+    // chunk文件名称
+    chunkFilename: "static/js/[name].[contenthash:10].chunk.js",
     // 图片，字体，通过type：asset处理的资源全名方式
     assetModuleFilename: "static/media/[hash:10][ext][query]",
     // 打包前将path的整个目录内容清空，在进行打包
@@ -75,6 +79,7 @@ module.exports = {
       exclude: "node_modules",
       context: path.resolve(__dirname, "../src"),
       cache: true,
+      extensions: ["js", "jsx", "ts", "tsx"],
       cacheLocation: path.resolve(
         __dirname,
         "../node_modules/.cache/.eslintcache"

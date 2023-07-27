@@ -46,6 +46,7 @@ module.exports = merge.merge(baseConfig, {
         },
         // 其他的一起打包
         lib: {
+          test: /[\\/]node_modules[\\/][\\/]/,
           priority: 30, // 权重（越大越高）
           name: "chunk-lib",
         },

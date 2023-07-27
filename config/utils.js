@@ -2,8 +2,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const NODE_ENV = process.env.NODE_ENV;
 const isDev = NODE_ENV === "development";
 const isProd = NODE_ENV === "production";
-
-console.log(process.env, "process.env");
 /**
  * 用来获取处理样式的loader
  * @param {*} pre
