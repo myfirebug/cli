@@ -55,5 +55,4 @@ module.exports = merge.merge(baseConfig, {
       name: (entrypoint) => `runtime~${entrypoint.name}`,
     },
   },
-  preformance: false,
 });

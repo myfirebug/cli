@@ -15,7 +15,7 @@ function App() {
           <Link to="/about">about</Link>
         </li>
       </ul>
-      <Suspense>
+      <Suspense fallback={<div>loading</div>}>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />

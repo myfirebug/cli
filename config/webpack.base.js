@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const path = require("path");
 const { tools } = require("./utils");
-const { getStyleLoader, isDev } = tools;
+const { getStyleLoader, isDev, fmtDate } = tools;
 
 module.exports = {
   stats: "errors-only",
@@ -84,6 +84,9 @@ module.exports = {
       // 模板：以public/index.html文件创建新的html文件
       // 新的文件特点：结构和原来一致，自动引入打包出的资源
       template: path.resolve(__dirname, "../public/index.html"),
+      title: "我是标题",
+      // 代码更新时间
+      buildTime: fmtDate(new Date(), "yyyy-MM-dd hh:mm:ss"),
     }),
     new WebpackBar(),
   ],
