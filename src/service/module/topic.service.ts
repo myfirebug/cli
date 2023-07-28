@@ -5,7 +5,7 @@ import axios from "../fetch";
 const topicService = {
   // 主题首页
   getTopics(params: any) {
-    return axios.get<ITopicItem[]>(Topic.getTopics, { params });
+    return axios.get<ITopicItem[], ITopicItem[]>(Topic.getTopics, { params });
   },
 };
 

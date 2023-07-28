@@ -4,23 +4,34 @@ import "./index.scss";
 
 function Home() {
   const [code, useCode] = useState<number>(0);
-  const { getTopics } = useTopic();
+  const { getTopics, topics, topicsLoading } = useTopic();
 
   useEffect(() => {
     getTopics({});
   }, [getTopics]);
 
   return (
-    <h1 className="home-title">
-      Home{code}{" "}
-      <button
-        onClick={() => {
-          useCode(code + 1);
-        }}
-      >
-        +
-      </button>
-    </h1>
+    <div>
+      <h1 className="home-title">
+        Home{code}{" "}
+        <button
+          onClick={() => {
+            useCode(code + 1);
+          }}
+        >
+          +
+        </button>
+      </h1>
+      {topicsLoading ? (
+        <div>加载中...</div>
+      ) : (
+        <ul>
+          {topics.map((item) => (
+            <li key={item.id}>{item.title}</li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
