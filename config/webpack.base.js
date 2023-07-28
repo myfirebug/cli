@@ -99,5 +99,11 @@ module.exports = {
   resolve: {
     // 自动补全文件扩展名
     extensions: [".js", ".jsx", ".tsx", ".ts"],
+    alias: {
+      "@src": path.resolve(__dirname, "../src/"),
+      "@service": path.resolve(__dirname, "../src/service/"),
+      "@pages": path.resolve(__dirname, "../src/pages/"),
+      "@core": path.resolve(__dirname, "../src/core/"),
+    },
   },
 };

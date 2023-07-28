@@ -12,10 +12,12 @@ module.exports = merge.merge(baseConfig, {
   mode: "production",
   devtool: "source-map",
   plugins: [
+    // 压缩样式
     new MiniCssExtractPlugin({
       filename: "static/css/[name].[contenthash:10].css",
       chunkFilename: "static/css/[name].[contenthash:10].chunk.css",
     }),
+    // 复制文件
     new CopyPlugin({
       patterns: [
         {
