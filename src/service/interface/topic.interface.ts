@@ -1,3 +1,11 @@
+// tab 类型
+export enum ITab {
+  ask,
+  share,
+  job,
+  good,
+}
+
 // 主题活动
 export interface ITopicItem {
   // 键值
@@ -5,7 +13,7 @@ export interface ITopicItem {
   // 作者ID
   author_id: string;
   // 类型
-  tab: string;
+  tab: ITab;
   // 主题类型
   content: string;
   // 主题标题

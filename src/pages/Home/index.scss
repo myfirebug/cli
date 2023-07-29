@@ -1,5 +1,7 @@
 .home {
   &-title {
+    background: var(--bgColor);
     color: red;
+    transition: all 0.25s ease 0s;
   }
 }
