@@ -5,3 +5,11 @@
     transition: all 0.25s ease 0s;
   }
 }
+ul {
+  background: var(--bgColor);
+  transition: all 0.25s ease 0s;
+  a,
+  li {
+    color: #fff;
+  }
+}
